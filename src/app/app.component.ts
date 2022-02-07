@@ -40,7 +40,8 @@ export class AppComponent {
     return str[index];
   }
 
-  onButtonClick() {
+  generate(e: any) {
+    e.preventDefault();
     const lower = 'abcdefghijklmnopqrstuvwxyz';
     const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const numbers = '1234567890';

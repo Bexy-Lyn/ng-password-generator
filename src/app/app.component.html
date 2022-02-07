@@ -1,38 +1,58 @@
-<h1>Password Generator</h1>
 
-<div>
-  <label for="length">Length</label>
-  <input id="length" type="number" min="4" (blur)="setLength($event.target)" [value]="length"/>
-</div>
+  <div class=card>
+    <h1>Password Generator</h1>
+  
+    <form (submit)="generate($event)">
+      <label for="length" class="field">
+        <span>Length</span>
+        <input id="length" type="number" min="4" (blur)="setLength($event.target)" [value]="length"/>
+      </label>
+      
+      <label for="lower" class="toggle">
+        <div class="switch">
+          <input id="lower" type="checkbox" (change)="toggleLower()" [checked]="lower"/>
+          <span class="slider"></span>
+        </div>
+        <span>Lowercase Letters</span>
+      </label>
+      
+      <label for="upper" class="toggle">
+        <div class="switch">
+          <input id="upper" type="checkbox" (change)="toggleUpper()" [checked]="upper"/>
+          <span class="slider"></span>
+        </div>
+        <span>Uppercase Letters</span>
+      </label>
+      
+      <label for="numbers" class="toggle">
+        <div class="switch">
+          <input id="numbers" type="checkbox" (change)="toggleNumbers()" [checked]="numbers"/>
+          <span class="slider"></span>
+        </div>  
+        <span>Numbers</span>
+      </label>
+      
+      <label for="symbols" class="toggle">
+        <div class="switch">
+          <input id="symbols" type="checkbox" (change)="toggleSymbols()" [checked]="symbols"/>
+          <span class="slider"></span>
+        </div>
+        <span>Symbols</span>
+      </label>
+      
+      <button 
+        [disabled]="!(length && (lower || upper || numbers || symbols))" 
+        type="submit"
+      >
+        Generate
+      </button>
+    
+    </form>
+    
+    <div>
+      <label for="pw">Your Password</label>
+      <input id="pw" [value]="password"/>
+    </div>
+  
+  </div>
 
-<div>
-  <label for="lower">Lowercase Letters</label>
-  <input id="lower" type="checkbox" (change)="toggleLower()" [checked]="lower"/>
-</div>
-
-<div>
-  <label for="upper">Uppercase Letters</label>
-  <input id="upper" type="checkbox" (change)="toggleUpper()" [checked]="upper"/>
-</div>
-
-<div>
-  <label for="numbers">Numbers</label>
-  <input id="numbers" type="checkbox" (change)="toggleNumbers()" [checked]="numbers"/>
-</div>
-
-<div>
-  <label for="symbols">Symbols</label>
-  <input id="symbols" type="checkbox" (change)="toggleSymbols()" [checked]="symbols"/>
-</div>
-
-<div>
-  <button 
-  [disabled]="!(length && (lower || upper || numbers || symbols))" 
-  (click)="onButtonClick()"
-  >Generate</button>
-</div>
-
-<div>
-  <label for="pw">Your Password</label>
-  <input id="pw" [value]="password"/>
-</div>
