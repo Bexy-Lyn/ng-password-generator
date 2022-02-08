@@ -11,6 +11,7 @@ export class AppComponent {
   upper = false;
   numbers = false;
   symbols = false;
+  alertOpen = false;
 
   password = '';
 
@@ -78,8 +79,10 @@ export class AppComponent {
     this.password = generatedPw;
   }
 
-  copy() {
+  copy(e: any) {
+    e.preventDefault();
     navigator.clipboard.writeText(this.password);
-    alert('Password copied to clipboard.');
+    this.alertOpen = true;
+    setTimeout(() => (this.alertOpen = false), 3000);
   }
 }

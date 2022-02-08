@@ -1,5 +1,5 @@
 
-    <form (submit)="generate($event)">
+<form (submit)="generate($event)">
   <fieldset class=card>
     <h1>Password Generator</h1>
 
@@ -48,9 +48,11 @@
         Generate
       </button>
     </fieldset>
-    <fieldset class="card dark">
+    <fieldset *ngIf="password !== ''" class="card dark">
       <label for="pw">Your Password</label>
       <textarea autosize class="output" id="pw">{{password}}</textarea>
-      <button (click)="copy()" class="icon"><span>Copy to Clipboard</span></button>
+      <button (click)="copy($event)" class="icon"><span>Copy to Clipboard</span></button>
     </fieldset>
-    </form>
+  </form>
+
+<p *ngIf="alertOpen" class="alert">Password copied to clipboard.</p>

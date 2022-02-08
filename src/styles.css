@@ -220,3 +220,13 @@ button.icon span {
   position: absolute;
   z-index: -1;
 }
+
+.alert {
+  position: fixed;
+  bottom: 1rem;
+  border-radius: 1rem;
+  border: 1.5px solid #6f0c38;
+  color: #ccc;
+  padding: 1rem;
+  background-color: #191528;
+}
