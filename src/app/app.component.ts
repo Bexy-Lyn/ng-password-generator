@@ -42,6 +42,7 @@ export class AppComponent {
 
   generate(e: any) {
     e.preventDefault();
+    console.log('called');
     const lower = 'abcdefghijklmnopqrstuvwxyz';
     const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const numbers = '1234567890';
@@ -75,5 +76,10 @@ export class AppComponent {
       generatedPw += this.getRandom(validChars);
     }
     this.password = generatedPw;
+  }
+
+  copy() {
+    navigator.clipboard.writeText(this.password);
+    alert('Password copied to clipboard.');
   }
 }

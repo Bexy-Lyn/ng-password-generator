@@ -1,8 +1,8 @@
 
-  <div class=card>
-    <h1>Password Generator</h1>
-  
     <form (submit)="generate($event)">
+  <fieldset class=card>
+    <h1>Password Generator</h1>
+
       <label for="length" class="field">
         <span>Length</span>
         <input id="length" type="number" min="4" (blur)="setLength($event.target)" [value]="length"/>
@@ -41,18 +41,16 @@
       </label>
       
       <button 
+      class="primary"
         [disabled]="!(length && (lower || upper || numbers || symbols))" 
         type="submit"
       >
         Generate
       </button>
-    
-    </form>
-    
-    <div>
+    </fieldset>
+    <fieldset class="card dark">
       <label for="pw">Your Password</label>
-      <input id="pw" [value]="password"/>
-    </div>
-  
-  </div>
-
+      <textarea autosize class="output" id="pw">{{password}}</textarea>
+      <button (click)="copy()" class="icon"><span>Copy to Clipboard</span></button>
+    </fieldset>
+    </form>
